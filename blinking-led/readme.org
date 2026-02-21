@@ -2,6 +2,7 @@
 ** Prerequisities
 - Firstly, look at device whether it is defined by your operating system
   We expect that output of /lsusb/ lists STM board as the following image depicts
+
   [[img/lsusb.png]]
 
 - Then load toolchain and a few tools (openocd for debugging, stlink-tools for the board by the vendor)
@@ -17,7 +18,8 @@
   - udevadm control --reload-rules
   - udevadm trigger
 
-- Finally, you will see output of /st-info --probe/ command on screen like \
+- Finally, you will see output of /st-info --probe/ command on screen like
+  
   [[img/st-info.png]]
 
 ** OpenOCD
@@ -26,6 +28,7 @@ check hardware pins using OpenOCD. It works like a GDB Server on host via connec
 connect to target over a web service.
 
 - Run /openocd -f interface/stlink.cfg -f target/stm32f4x.cfg/ on host terminal, then see the following output
+  
   [[img/openocd.png]]
 
 ** Connecting & Running Application on Target
