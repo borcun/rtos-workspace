@@ -17,7 +17,7 @@
   - udevadm control --reload-rules
   - udevadm trigger
 
-- Finally, you will see output of /st-info --probe/ command on screen like
+- Finally, you will see output of /st-info --probe/ command on screen like \
   [[img/st-info.png]]
 
 ** OpenOCD
