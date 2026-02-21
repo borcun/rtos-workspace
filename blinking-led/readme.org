@@ -29,7 +29,7 @@ connect to target over a web service.
 
 - Run /openocd -f interface/stlink.cfg -f target/stm32f4x.cfg/ on host terminal, then see the following output
   
-  [[img/openocd.png]]
+ [[img/openocd.png]]
 
 ** Connecting & Running Application on Target
 - After running OpenOCD in a terminal, build _blinking PG13 LED_ project on another terminal
