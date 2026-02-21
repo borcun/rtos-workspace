@@ -2,7 +2,8 @@
 ** Prerequisities
 - Firstly, look at device whether it is defined by your operating system
   We expect that output of /lsusb/ lists STM board as the following image depicts
-  [[img/lsusb.png]]
+
+  [[img/usb.png]]
 
 - Then load toolchain and a few tools (openocd for debugging, stlink-tools for the board by the vendor)
   - gcc-arm-none-eabi gdb-arm-none-eabi binutils-arm-none-eabi openocd stlink-tools
