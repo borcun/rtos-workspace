@@ -1,9 +1,10 @@
+
 * STM32F429 LED Blink Project on Debian
 ** Prerequisities
 - Firstly, look at device whether it is defined by your operating system
   We expect that output of /lsusb/ lists STM board as the following image depicts
 
-  [[img/usb.png]]
+  [[./img/usb.png]]
 
 - Then load toolchain and a few tools (openocd for debugging, stlink-tools for the board by the vendor)
   - gcc-arm-none-eabi gdb-arm-none-eabi binutils-arm-none-eabi openocd stlink-tools
@@ -20,7 +21,7 @@
 
 - Finally, you will see output of /st-info --probe/ command on screen like
   
-  [[img/st-info.png]]
+  [[./img/st-info.png]]
 
 ** OpenOCD
 It is an open source tool that provides remote debugging between host and target. Additionally, you may flash binary file
@@ -29,7 +30,7 @@ connect to target over a web service.
 
 - Run /openocd -f interface/stlink.cfg -f target/stm32f4x.cfg/ on host terminal, then see the following output
   
- [[img/openocd.png]]
+ [[./img/openocd.png]]
 
 ** Connecting & Running Application on Target
 - After running OpenOCD in a terminal, build _blinking PG13 LED_ project on another terminal

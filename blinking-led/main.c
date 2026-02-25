@@ -31,6 +31,6 @@ int main(void) {
     
   while(1) {
     GPIOG_ODR ^= (1 << 13);   // Toggle
-    delay(500000);
+    delay(1000000);
   }
 }
