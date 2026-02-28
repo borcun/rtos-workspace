@@ -1,0 +1,47 @@
+
+* STM32F429 LED Blink Project on Debian
+** Prerequisities
+- Firstly, look at device whether it is defined by your operating system
+  We expect that output of /lsusb/ lists STM board as the following image depicts
+
+  [[./img/usb.png]]
+
+- Then load toolchain and a few tools (openocd for debugging, stlink-tools for the board by the vendor)
+  - gcc-arm-none-eabi gdb-arm-none-eabi binutils-arm-none-eabi openocd stlink-tools
+    /Note that if gdb is not found into the repo, install gdb-multiarch instead./
+
+- For prevent 'Permission Denied' error, you may put the following text into */etc/udev/rules.d/49-stlinkv2.rules* file.
+  /Unless presence specified, create it./
+  - SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE="0666"
+    /Your product may has different id, so put yours for idProduct attribute/
+
+- Next, active your rules executing the following commands with root permission
+  - udevadm control --reload-rules
+  - udevadm trigger
+
+- Finally, you will see output of /st-info --probe/ command on screen like
+  
+  [[./img/st-info.png]]
+
+** OpenOCD
+It is an open source tool that provides remote debugging between host and target. Additionally, you may flash binary file
+check hardware pins using OpenOCD. It works like a GDB Server on host via connection target. It serves host debugger to
+connect to target over a web service.
+
+- Run /openocd -f interface/stlink.cfg -f target/stm32f4x.cfg/ on host terminal, then see the following output
+  
+ [[./img/openocd.png]]
+
+** Connecting & Running Application on Target
+- After running OpenOCD in a terminal, build _blinking PG13 LED_ project on another terminal
+  /Makefile uses main.c and stm32f429.ld files in turn as source code and linker directive files/
+
+- Execute /gdb-multiarch blink.elf/ command to run debugger client on host firstly, then the following commands on gdb
+  - /set architecture arm/
+  - /target extended-remote :3333/
+  - /monitor reset halt/
+  - /load/
+  - /monitor reset init/
+  - /continue/
+
+- Finally, you will see that PG13 LED is blinking

@@ -28,10 +28,15 @@ int main(void) {
   RCC_AHB1ENR |= (1 << 6);      // GPIOG clock enable (Chapter 7.3.10)
   GPIOG_MODER &= ~(3 << 26);    // Clear Moder13 for PG13 (Chapter 8.4.11)
   GPIOG_MODER |=  (1 << 26);    // PG13 Output
+  GPIOG_MODER &= ~(3 << 28);    // Clear Moder14 for PG14 (Chapter 8.4.11)
+  GPIOG_MODER |=  (1 << 28);    // PG14 Output
      
   while(1) {
     // output data register
     GPIOG_ODR ^= (1 << 13);   // Toggle
-    delay(1000000);
+    delay(250000);
+    // output data register
+    GPIOG_ODR ^= (1 << 14);   // Toggle
+    delay(250000);
   }
 }
